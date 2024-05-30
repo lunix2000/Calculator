@@ -1,3 +1,47 @@
+const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const operators = ['/', '*', '-', '+'];
+
+
+document.addEventListener('keyup', function (event) {
+  let keyName = event.key;
+
+  // Numbers 0-9
+  if (numbers.includes(keyName)) {
+    appendNumber(keyName);
+  }
+
+  // Operators /, *, -, +, =
+  if (operators.includes(keyName)) {
+    if (keyName == '/') {
+      setOperation('divide');
+    }
+    if (keyName == '*') {
+      setOperation('multiply');
+    }
+    if (keyName == '-') {
+      setOperation('subtract');
+    }
+    if (keyName == '+') {
+      setOperation('add');
+    }
+  }
+
+  if (keyName == 'Enter') {
+    calculate();
+  }
+
+  // Backspace to reset value and display value
+  if (keyName == 'Backspace') {
+    backspace();
+  }
+
+  // Dot 
+  if (keyName == ',' || keyName == '.') {
+    appendDot();
+  }
+});
+
+
 function operate(operator, a, b) {
   switch (operator) {
     case 'add':
