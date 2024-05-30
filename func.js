@@ -5,12 +5,10 @@ const operators = ['/', '*', '-', '+'];
 document.addEventListener('keyup', function (event) {
   let keyName = event.key;
 
-  // Numbers 0-9
   if (numbers.includes(keyName)) {
     appendNumber(keyName);
   }
 
-  // Operators /, *, -, +, =
   if (operators.includes(keyName)) {
     if (keyName == '/') {
       setOperation('divide');
@@ -30,14 +28,16 @@ document.addEventListener('keyup', function (event) {
     calculate();
   }
 
-  // Backspace to reset value and display value
   if (keyName == 'Backspace') {
     backspace();
   }
 
-  // Dot 
   if (keyName == ',' || keyName == '.') {
     appendDot();
+  }
+
+  if (keyName == 'Delete') {
+    clearDisplay();
   }
 });
 
@@ -71,13 +71,13 @@ function multiply(a, b) {
 
 function divide(a, b) {
   if (b === 0) {
-    return 'Error'; // Handle division by zero
+    return 'Error';
   }
   return a / b;
 }
 
 function roundResult(number) {
-  return Math.round(number * 1000) / 1000; // Round to 3 decimal places
+  return Math.round(number * 1000) / 1000;
 }
 
 
